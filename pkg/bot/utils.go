@@ -10,20 +10,20 @@ import (
 
 	"github.com/raylas/query-bot/pkg/config"
 	"github.com/slack-go/slack"
+	"github.com/slack-go/slack/slackevents"
 )
 
-func (s *Slack) Parse(ev *slack.MessageEvent, user *slack.User, config config.Configuration) error {
-	msg := ev.Msg
-
+func (s *Slack) Parse(ev *slackevents.MessageEvent, user *slack.User, config config.Configuration) error {
 	// Iterate over queries in configuration
 	for _, q := range config.Queries {
 		// Look for a query command that matches channel message
-		if msg.Text == q.Command {
+		if ev.Text == q.Command {
 			resp, err := Query(q.URL, q.File)
 			if err != nil {
 				s.Logger.Printf("[ERROR] %s\n", err)
 			}
 
+			// Issue: for file queries to work keep an eye on <https://github.com/slack-go/slack/pull/908>
 			if q.File {
 				attachment := slack.FileUploadParameters{
 					File:     resp,

@@ -6,7 +6,8 @@ services:
       context: .
       target: develop
     environment:
-      SLACK_TOKEN: ${SLACK_TOKEN}
+      SLACK_APP_TOKEN: ${SLACK_APP_TOKEN}
+      SLACK_BOT_TOKEN: ${SLACK_BOT_TOKEN}
     volumes:
     - .:/build
   
