@@ -1,0 +1,7 @@
+queries:
+- command: "!webcam"
+  url: https://internetmountain.org/m/frame.jpg
+  file: true
+- command: "!ifconfig"
+  url: https://ifconfig.co
+  file: false

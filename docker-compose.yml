@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  develop:
+    build:
+      context: .
+      target: develop
+    volumes:
+    - .:/build
+  
+  build:
+    build:
+      context: .
+      target: build
+    volumes:
+    - .:/build/output
+    command: ["cp","/build/query-bot","/build/output/"]
+
+  app:
+    build:
+      context: .
+      target: app
+    environment:
+      SLACK_TOKEN: ${SLACK_TOKEN}
+    volumes:
+    - ./config.yaml:/config.yaml
