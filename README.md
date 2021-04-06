@@ -15,7 +15,7 @@ Todo:
 queries:
 - command: !ifconfig
   url: https://ifconfig.co
-  file: true
+  file: false
 ```
 
 ## Usage
