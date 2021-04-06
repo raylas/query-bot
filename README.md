@@ -26,7 +26,7 @@ Requirements:
 
 ### Development
 ```shell
-ENV=<slack_token> docker-compose run develop
+SLACK_TOKEN=<token> docker-compose run develop
 ```
 
 ### Build
@@ -36,5 +36,5 @@ docker-compose run build
 
 ### App
 ```shell
-ENV=<slack_token> docker-compose run app
+SLACK_TOKEN=<token> docker-compose run app
 ```
