@@ -19,6 +19,11 @@ queries:
 ```
 
 ## Usage
+### Deployment
+Requirements:
+- Configuration present, baked-in, or volume mounted at `/config.yaml` or `./config.yaml`
+- Environment variable `SLACK_TOKEN` is set
+
 ### Development
 ```shell
 ENV=<slack_token> docker-compose run develop
@@ -33,8 +38,3 @@ docker-compose run build
 ```shell
 ENV=<slack_token> docker-compose run app
 ```
-
-### Deployment
-Requirements:
-- Configuration present, baked-in, or volume mounted at `/config.yaml` or `./config.yaml`
-- Environment variable `SLACK_TOKEN` is set
