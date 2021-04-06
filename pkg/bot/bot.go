@@ -71,5 +71,6 @@ func (s *Slack) Listen(ctx context.Context, config config.Configuration) error {
 			s.Logger.Printf("[ERROR] %s\n", ev.Error())
 		}
 	}
+
 	return nil
 }
