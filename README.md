@@ -5,9 +5,14 @@ query-bot is an unintelligent Slack bot for writing HTTP query responses to a gi
 It's basically a Slack bot for curl.
 
 Todo:
+- [ ] Slack integration updated to use [Slack apps](https://api.slack.com/start)
 - [ ] Some basic tests
 - [ ] Config boolean for help/queries menu
 - [ ] Logic for handling methods other than `GET`
+
+## Prerequisites
+- A legacy Slack bot integraton
+- Invite the bot into a channel
 
 ## Configure
 `config.yaml`
