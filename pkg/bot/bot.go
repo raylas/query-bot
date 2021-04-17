@@ -69,7 +69,7 @@ func (s *Slack) Listen(ctx context.Context, config config.Configuration) error {
 					continue
 				}
 
-				s.Logger.Printf("[DEBUG] Event received: %+v\n", eventsAPIEvent)
+				// s.Logger.Printf("[DEBUG] Event received: %+v\n", eventsAPIEvent)
 
 				api.Ack(*evt.Request)
 
@@ -88,7 +88,7 @@ func (s *Slack) Listen(ctx context.Context, config config.Configuration) error {
 							continue
 						}
 
-						s.Logger.Printf("[DEBUG] Heard message from `%s` (%s)\n", user.Profile.RealName, ev.User)
+						// s.Logger.Printf("[DEBUG] Heard message from `%s` (%s)\n", user.Profile.RealName, ev.User)
 						err = s.Parse(ev, user, config)
 						if err != nil {
 							s.Logger.Printf("[ERROR] Could not call parser function")

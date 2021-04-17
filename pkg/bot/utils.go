@@ -23,7 +23,6 @@ func (s *Slack) Parse(ev *slackevents.MessageEvent, user *slack.User, config con
 				s.Logger.Printf("[ERROR] %s\n", err)
 			}
 
-			// Issue: for file queries to work keep an eye on <https://github.com/slack-go/slack/pull/908>
 			if q.File {
 				attachment := slack.FileUploadParameters{
 					File:     resp,

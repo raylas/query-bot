@@ -33,11 +33,13 @@ queries:
 ## Usage
 ### Deployment requirements
 - Environment variables `SLACK_APP_TOKEN` and `SLACK_BOT_TOKEN` are set
-- Configuration present, baked-in, or volume mounted at `/config.yaml` or `./config.yaml`
+- Configuration present or volume mounted at `/config.yaml` or `./config.yaml`
 
 ### Development
 ```shell
-SLACK_TOKEN=<token> docker-compose run develop
+SLACK_APP_TOKEN=<app_token> \
+SLACK_BOT_TOKEN=<bot_token> \
+docker-compose run develop
 ```
 
 ### Build
@@ -47,5 +49,7 @@ docker-compose run build
 
 ### App
 ```shell
-SLACK_TOKEN=<token> docker-compose run app
+SLACK_APP_TOKEN=<app_token> \
+SLACK_BOT_TOKEN=<bot_token> \
+docker-compose run app
 ```
