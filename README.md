@@ -5,16 +5,23 @@ query-bot is an unintelligent Slack bot for writing HTTP query responses to a gi
 It's basically a Slack bot for curl.
 
 Todo:
-- [ ] Slack integration updated to use [Slack apps](https://api.slack.com/start)
 - [ ] Some basic tests
 - [ ] Config boolean for help/queries menu
 - [ ] Logic for handling methods other than `GET`
 
-## Prerequisites
-- A legacy Slack bot integraton
-- Invite the bot into a channel
+## Slack App
+1. Create [a new Slack App](https://api.slack.com/apps) 
+2. Enable **Socket Mode** and copy App Level Token
+3. Under **OAuth & Permissions** set the following Bot Token Scopes, and copy Bot Token:
+- `channels:history`
+- `chat:write`
+- `files:write`
+- `users:read`
+4. Toggle **Enable Events** under **Event Subscriptions**
+5. Install the Slack App to your workspace
+6. Invite the bot into channel(s)
 
-## Configure
+## Configuration
 `config.yaml`
 ```yaml
 queries:
@@ -24,14 +31,15 @@ queries:
 ```
 
 ## Usage
-### Deployment
-Requirements:
-- Configuration present, baked-in, or volume mounted at `/config.yaml` or `./config.yaml`
-- Environment variable `SLACK_TOKEN` is set
+### Deployment requirements
+- Environment variables `SLACK_APP_TOKEN` and `SLACK_BOT_TOKEN` are set
+- Configuration present or volume mounted at `/config.yaml` or `./config.yaml`
 
 ### Development
 ```shell
-SLACK_TOKEN=<token> docker-compose run develop
+SLACK_APP_TOKEN=<app_token> \
+SLACK_BOT_TOKEN=<bot_token> \
+docker-compose run develop
 ```
 
 ### Build
@@ -41,5 +49,7 @@ docker-compose run build
 
 ### App
 ```shell
-SLACK_TOKEN=<token> docker-compose run app
+SLACK_APP_TOKEN=<app_token> \
+SLACK_BOT_TOKEN=<bot_token> \
+docker-compose run app
 ```
